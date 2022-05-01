@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Form\SearchCompanyType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
@@ -15,6 +16,10 @@ class FrontController extends AbstractController
      */
     public function getHome(Request $request)
     {
-        return [];
+        $searchForm = $this->createForm(SearchCompanyType::class);
+
+        return [
+            'searchForm' => $searchForm->createView()
+        ];
     }
 }

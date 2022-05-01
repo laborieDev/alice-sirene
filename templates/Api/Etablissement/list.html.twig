@@ -1,0 +1,11 @@
+<div class="alc-api-etablisement-list">
+    {% for data in etablissements %}
+        {% set etablissement = denormalizeEtablissement(data) %}
+        <div class="alc-api-etablisement-list--item">
+            <div class="name">
+                <p>{{ etablissement.name }}</p>
+
+            </div>
+        </div>
+    {% endfor %}
+</div>
