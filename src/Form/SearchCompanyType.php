@@ -13,6 +13,13 @@ class SearchCompanyType extends AbstractType
             'required' => true,
             'attr' => [
                 'placeholder' => 'Rechercher une entreprise',
+                'class' => 'form-control'
+            ],
+            'label_attr' => [
+                'style' => 'display: none;'
+            ],
+            'row_attr' => [
+                'class' => 'form-group'
             ]
         ]);
     }

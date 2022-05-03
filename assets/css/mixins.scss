@@ -1,0 +1,17 @@
+@mixin createBackgroundElement() {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+@mixin displayFlex($position_x, $position_y) {
+  display: flex;
+  align-items: $position_y;
+  justify-content: $position_x;
+}
+
+@mixin displayFlexCenter {
+  @include displayFlex(center, center);
+}

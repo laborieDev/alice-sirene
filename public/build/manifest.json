@@ -2,5 +2,15 @@
   "build/app.js": "http://localhost:8080/build/app.js",
   "build/runtime.js": "http://localhost:8080/build/runtime.js",
   "build/vendors-node_modules_symfony_stimulus-bridge_dist_index_js-node_modules_core-js_modules_es_ob-50585a.js": "http://localhost:8080/build/vendors-node_modules_symfony_stimulus-bridge_dist_index_js-node_modules_core-js_modules_es_ob-50585a.js",
-  "build/vendors-node_modules_symfony_stimulus-bridge_dist_index_js-node_modules_core-js_modules_es_ob-6e8ca9.js": "http://localhost:8080/build/vendors-node_modules_symfony_stimulus-bridge_dist_index_js-node_modules_core-js_modules_es_ob-6e8ca9.js"
+  "build/vendors-node_modules_symfony_stimulus-bridge_dist_index_js-node_modules_core-js_modules_es_ob-6bf7c9.js": "http://localhost:8080/build/vendors-node_modules_symfony_stimulus-bridge_dist_index_js-node_modules_core-js_modules_es_ob-6bf7c9.js",
+  "build/images/fontawesome-webfont.svg": "http://localhost:8080/build/images/fontawesome-webfont.c1e38fd9.svg",
+  "build/fonts/fontawesome-webfont.eot": "http://localhost:8080/build/fonts/fontawesome-webfont.8b43027f.eot",
+  "build/fonts/fontawesome-webfont.ttf": "http://localhost:8080/build/fonts/fontawesome-webfont.1e59d233.ttf",
+  "build/fonts/fontawesome-webfont.woff": "http://localhost:8080/build/fonts/fontawesome-webfont.f691f37e.woff",
+  "build/fonts/fontawesome-webfont.woff2": "http://localhost:8080/build/fonts/fontawesome-webfont.20fd1704.woff2",
+  "build/vendors-node_modules_symfony_stimulus-bridge_dist_index_js-node_modules_core-js_modules_es_ob-a5cff8.js": "http://localhost:8080/build/vendors-node_modules_symfony_stimulus-bridge_dist_index_js-node_modules_core-js_modules_es_ob-a5cff8.js",
+  "build/vendors-node_modules_symfony_stimulus-bridge_dist_index_js-node_modules_bootstrap-sass_assets-64c974.js": "http://localhost:8080/build/vendors-node_modules_symfony_stimulus-bridge_dist_index_js-node_modules_bootstrap-sass_assets-64c974.js",
+  "build/vendors-node_modules_symfony_stimulus-bridge_dist_index_js-node_modules_bootstrap-sass_assets-2a8331.js": "http://localhost:8080/build/vendors-node_modules_symfony_stimulus-bridge_dist_index_js-node_modules_bootstrap-sass_assets-2a8331.js",
+  "build/vendors-node_modules_symfony_stimulus-bridge_dist_index_js-node_modules_bootstrap_dist_js_boo-a35d61.js": "http://localhost:8080/build/vendors-node_modules_symfony_stimulus-bridge_dist_index_js-node_modules_bootstrap_dist_js_boo-a35d61.js",
+  "build/vendors-node_modules_symfony_stimulus-bridge_dist_index_js-node_modules_bootstrap_dist_js_boo-ee4595.js": "http://localhost:8080/build/vendors-node_modules_symfony_stimulus-bridge_dist_index_js-node_modules_bootstrap_dist_js_boo-ee4595.js"
 }
