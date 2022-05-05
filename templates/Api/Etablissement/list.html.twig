@@ -2,10 +2,18 @@
     {% for data in etablissements %}
         {% set etablissement = denormalizeEtablissement(data) %}
         <div class="alc-api-etablisement-list--item">
-            <div class="name">
-                <p>{{ etablissement.name }}</p>
-
-            </div>
+            <p>
+                {{ etablissement.name }}
+                <span class="category">{{ etablissement.category }}</span>
+            </p>
+            <a href="#" data-action="view-company-link"
+               data-url="{{ path('api_view_company', {siret: etablissement.siret}) }}">
+                En voir plus <i class="fa fa-arrow-right" aria-hidden="true"></i>
+            </a>
         </div>
     {% endfor %}
+
+    {% if etablissements|length == 0 %}
+        <p>Aucun résultat</p>
+    {% endif %}
 </div>

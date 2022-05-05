@@ -12,7 +12,7 @@ class SearchCompanyType extends AbstractType
         $builder->add('text', TextType::class, [
             'required' => true,
             'attr' => [
-                'placeholder' => 'Rechercher une entreprise',
+                'placeholder' => 'Nom d\'une entreprise',
                 'class' => 'form-control'
             ],
             'label_attr' => [

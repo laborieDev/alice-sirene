@@ -9,6 +9,7 @@
         "doctrine/doctrine-bundle": "^2.6",
         "doctrine/doctrine-migrations-bundle": "^3.2",
         "doctrine/orm": "^2.12",
+        "friendsofsymfony/jsrouting-bundle": "^2.8",
         "friendsofsymfony/rest-bundle": "^3.3",
         "jms/serializer-bundle": "^4.0",
         "phpdocumentor/reflection-docblock": "^5.3",

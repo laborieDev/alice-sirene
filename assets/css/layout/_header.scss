@@ -1,0 +1,16 @@
+#header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  @include displayFlexCenter();
+  height: $headerHeight;
+  background-color: rgba(0,0,0,.2);
+  backdrop-filter: blur(10px);
+  z-index: 200;
+
+  h3 {
+    color: $white;
+    font-family: $logo-font;
+  }
+}

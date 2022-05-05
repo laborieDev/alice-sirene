@@ -1,0 +1,26 @@
+main {
+  position: relative;
+  padding-top: $headerHeight;
+  min-height: 100vh;
+
+  .background {
+    @include createBackgroundElement();
+    z-index: -1;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    &:before {
+      content: '';
+      @include createBackgroundElement();
+      background-color: rgba($black, .5);
+    }
+  }
+
+  .page-content {
+    margin: 50px 0 0;
+  }
+}

@@ -16,11 +16,15 @@
             {% include 'Layout/header.html.twig' %}
         </header>
         <main class="{% block page_classes %}{% endblock %}">
-            {% block content %}{% endblock %}
+            <div class="background">
+                <img src="/media/search-background.jpg">
+            </div>
+            <div class="page-content">
+                {% block content %}{% endblock %}
+            </div>
         </main>
-        <footer>
-            {% include 'Layout/footer.html.twig' %}
-        </footer>
+        <script src="{{ asset('bundles/fosjsrouting/js/router.min.js') }}"></script>
+        <script src="{{ path('fos_js_routing_js', { callback: 'fos.Router.setData' }) }}"></script>
     </body>
 </html>
 

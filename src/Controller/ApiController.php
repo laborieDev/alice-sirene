@@ -13,11 +13,12 @@ use Symfony\Component\Routing\Annotation\Route;
 use FOS\RestBundle\Controller\Annotations as Rest;
 
 /**
- * @Route("/api", name="api_")
+ * @Route("/api", name="api")
  */
 class ApiController extends AbstractController
 {
     const SIRENE_V1_URL = 'https://entreprise.data.gouv.fr/api/sirene/v1';
+    const SIRENE_V3_URL = 'https://entreprise.data.gouv.fr/api/sirene/v3';
 
     /** @var HttpClientInterface */
     private $client;
@@ -32,32 +33,37 @@ class ApiController extends AbstractController
     }
 
     /**
-     * @Rest\Get("/search/{therm}", name="_search_company")
+     * @Rest\Get("/search/{term}", name="_search_company", options={"expose"=true})
      */
-    public function getSearchResults(Request $request, $therm)
+    public function getSearchResults(Request $request, $term)
     {
         $perPage = $request->get('perPage') ?? 5;
         $page = $request->get('page') ?? 1;
 
-        $url = self::SIRENE_V1_URL."/full_text/{$therm}?per_page={$perPage}&page={$page}";
+        $url = self::SIRENE_V3_URL."/unites_legales/?denomination={$term}&per_page={$perPage}&page={$page}";
 
         $response = $this->client->request('GET', $url);
 
-        if ($response->getStatusCode() !== 200) {
+        if ($response->getStatusCode() === 500) {
             throw new NotFoundHttpException('Error to Sirene API');
         }
 
-        $content = $response->toArray();
-        $etablissement = $content['etablissement'] ?? [];
+        $content = [];
+
+        try {
+            $content = $response->toArray();
+        } catch (\Exception $e) {}
+
+        $etablissements = $content['unites_legales'] ?? [];
 
         return new JsonResponse([
-            'searchName' => $therm,
+            'searchName' => $term,
             'perPage' => $perPage,
             'page' => $page,
             'totalPages' => $content['totalPages'] ?? 1,
-            'totalResults' => $content['totalPages'] ?? sizeof($etablissement),
-            'etablissement' => $etablissement,
-            'renderHtml' => $this->apiLib->getEtablissementListRender($etablissement)
+            'totalResults' => $content['totalPages'] ?? sizeof($etablissements),
+            'etablissement' => $etablissements,
+            'renderHtml' => $this->apiLib->getEtablissementListRender($etablissements)
         ]);
     }
 
@@ -66,7 +72,7 @@ class ApiController extends AbstractController
      */
     public function getCompany(Request $request, $siret)
     {
-        $url = self::SIRENE_V1_URL."/siret/{$siret}";
+        $url = self::SIRENE_V3_URL."/etablissements/{$siret}";
 
         $response = $this->client->request('GET', $url);
         $content = $response->toArray();
@@ -76,7 +82,9 @@ class ApiController extends AbstractController
         }
 
         $etablissementDatas = $content['etablissement'] ?? [];
+        dd($etablissementDatas);
         $etablissement = $this->apiLib->denormalizeEtablissement($etablissementDatas);
+        dd($etablissement);
 
         return new JsonResponse([
             'etablissement' => $etablissementDatas,

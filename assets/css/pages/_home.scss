@@ -1,31 +1,71 @@
 .home-page {
   .form {
-    height: calc(100vh - 40px);
     position: relative;
     @include displayFlexCenter();
 
-    .background {
-      @include createBackgroundElement();
-      z-index: -1;
-
-      img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-      }
-
-      &:before {
-        content: '';
-        @include createBackgroundElement();
-        background-color: rgba(0, 0, 0, .5);
-      }
-    }
-
     .content {
       z-index: 1;
+      width: 100%;
+      height: 100%;
 
       h1 {
         color: $white;
+        text-align: center;
+      }
+
+      form {
+        width: 100%;
+        .search-form {
+          @include displayFlexCenter();
+          max-width: 500px;
+          margin: 0 auto;
+
+          .input {
+            width: calc(100% - 50px);
+
+            input {
+              height: 50px;
+              border-radius: 5px 0 0 5px;
+              border: none;
+            }
+          }
+
+          .action {
+            button {
+              height: 50px;
+              width: 50px;
+              @include displayFlexCenter();
+              background-color: $primary-color;
+              color: $white;
+              border-radius: 0 5px 5px 0;
+              text-decoration: none;
+              border: none;
+              @include transition(all .5s);
+
+              &:hover {
+                background-color: $secondary-color;
+              }
+            }
+          }
+        }
+      }
+
+      .results {
+        background-color: $white;
+        margin: 50px auto;
+        padding: 20px;
+        width: min-content;
+        min-width: 500px;
+        max-width: 100%;
+
+        p {
+          margin: 0;
+          text-align: center;
+        }
+
+        .alc-loader {
+          margin: 10px auto;
+        }
       }
     }
   }

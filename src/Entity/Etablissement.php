@@ -8,15 +8,6 @@ use Doctrine\ORM\Mapping as ORM;
 
 class Etablissement
 {
-    const SIRENE_ADDRESS_FIELD = [
-        'l2_normalisee',
-        'l3_normalisee',
-        'l4_normalisee',
-        'l5_normalisee',
-        'l6_normalisee',
-        'l7_declaree'
-    ];
-
     /**
      * @var string
      */
@@ -40,135 +31,101 @@ class Etablissement
     /**
      * @var string
      */
-    protected $fullAddress;
+    protected $address;
 
     /**
      * @var string
      */
-    protected $companyCode;
+    protected $category;
 
     /**
-     * @var string
+     * @var \DateTime
      */
-    protected $companyLabel;
-
-    /**
-     * @var string
-     */
-    protected $activity;
+    protected $createdAt;
 
     public function __construct()
     {}
 
-    public function getName(): string
+    public function getName(): ?string
     {
         return $this->name;
     }
 
-    public function setName(string $name): self
+    public function setName(?string $name): self
     {
         $this->name = $name;
 
         return $this;
     }
 
-    public function getSiren(): string
+    public function getSiren(): ?string
     {
         return $this->siren;
     }
 
-    public function setSiren(string $siren): self
+    public function setSiren(?string $siren): self
     {
         $this->siren = $siren;
 
         return $this;
     }
 
-    public function getSiret(): string
+    public function getSiret(): ?string
     {
         return $this->siret;
     }
 
-    public function setSiret(string $siret): self
+    public function setSiret(?string $siret): self
     {
         $this->siret = $siret;
 
         return $this;
     }
 
-    public function getNic(): string
+    public function getNic(): ?string
     {
         return $this->nic;
     }
 
-    public function setNic(string $nic): self
+    public function setNic(?string $nic): self
     {
         $this->nic = $nic;
 
         return $this;
     }
 
-    /**
-     * Construct full address with Sirene API datas
-     */
-    public function constructFullAddress(array $datas): self
+    public function getAddress(): ?string
     {
-        $address = '';
-
-        foreach (self::SIRENE_ADDRESS_FIELD as $fieldName) {
-            $data = $datas[$fieldName] ?? null;
-            if ($data !== null) {
-                $address .= $data . ' ';
-            }
-        }
-
-        return $this->setFullAddress($address);
+        return $this->address;
     }
 
-    public function getFullAddress(): string
+    public function setAddress(?string $address): self
     {
-        return $this->fullAddress;
-    }
-
-    public function setFullAddress(string $fullAddress): self
-    {
-        $this->fullAddress = $fullAddress;
+        $this->address = $address;
 
         return $this;
     }
 
-    public function getCompanyCode(): string
+    public function getCategory(): ?string
     {
-        return $this->companyCode;
+        return $this->category;
     }
 
-    public function setCompanyCode(string $companyCode): self
+    public function setCategory(?string $category): self
     {
-        $this->companyCode = $companyCode;
+        $this->category = $category;
 
         return $this;
     }
 
-    public function getCompanyLabel(): string
+    public function getCreatedAt(): ?\DateTime
     {
-        return $this->companyLabel;
+        return $this->createdAt;
     }
 
-    public function setCompanyLabel(string $companyLabel): self
+    public function setCreatedAt(?\DateTime $createdAt): self
     {
-        $this->companyLabel = $companyLabel;
-
-        return $this;
-    }
-
-    public function getActivity(): string
-    {
-        return $this->activity;
-    }
-
-    public function setActivity(string $activity): self
-    {
-        $this->activity = $activity;
+        $this->createdAt = $createdAt;
 
         return $this;
     }

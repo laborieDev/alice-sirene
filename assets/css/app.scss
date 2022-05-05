@@ -1,19 +1,27 @@
 @import "~font-awesome";
 @import "~bootstrap/scss/bootstrap";
+
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@100&display=swap');
 
 @import "mixins";
 
 // Fonts
 $primary-font: 'Poppins', sans-serif;
+$logo-font: 'Raleway', sans-serif;
 
 // Colors
-$primary-color: #233;
+$primary-color: #2874A6;
+$secondary-color: #85C1E9;
 $white: #fff;
 $black: #000;
+
+$headerHeight: 80px;
 
 body {
     font-family: $primary-font;
 }
 
+@import "layout/layout";
+@import "components/components";
 @import "pages/pages";
