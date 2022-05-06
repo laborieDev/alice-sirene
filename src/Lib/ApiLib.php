@@ -51,10 +51,15 @@ class ApiLib
      * @throws \Twig\Error\RuntimeError
      * @throws \Twig\Error\SyntaxError
      */
-    public function getEtablissementListRender(array $etablissements)
+    public function getEtablissementListRender(array $datas)
     {
-        return $this->twig->render('Api/Etablissement/list.html.twig', [
-            'etablissements' => $etablissements
+        return $this->twig->render('Api/Etablissement/list.html.twig', $datas);
+    }
+
+    public function getSingletablissementRender(Etablissement $etablissement)
+    {
+        return $this->twig->render('Api/Etablissement/single.html.twig', [
+            'etablissement' => $etablissement
         ]);
     }
 }

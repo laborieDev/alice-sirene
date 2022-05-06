@@ -26,14 +26,34 @@ export default function initSearch() {
 
         let term = formDatas['search_company[text]'];
 
-        $.ajax({
-            url: Routing.generate('api_search_company', {term: term})
-        })
-            .done(function (data) {
-                $resultsContainer.html(data.renderHtml);
-            })
-            .fail(function () {
-                console.error('Api Error');
-            });
+        callAjaxSearch(term);
     });
+}
+
+function callAjaxSearch(term, data = {}, isSeeMoreAction = false)
+{
+    $.ajax({
+        url: Routing.generate('api_search_company', {term: term}),
+        data: data
+    })
+        .done(function (data) {
+            if (isSeeMoreAction) {
+                $resultsContainer.find('.alc-loader').remove();
+                $resultsContainer.append(data.renderHtml);
+            } else {
+                $resultsContainer.html(data.renderHtml);
+            }
+
+            $('.list-see-more').on('click', function (event) {
+                event.preventDefault();
+                let term = $(this).attr('data-term');
+                let page = $(this).attr('data-page');
+                $(this).remove();
+                $resultsContainer.append(getLoader());
+                callAjaxSearch(term, {page: page}, true);
+            });
+        })
+        .fail(function () {
+            console.error('Api Error');
+        });
 }

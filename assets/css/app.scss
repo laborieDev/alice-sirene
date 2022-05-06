@@ -18,10 +18,6 @@ $black: #000;
 
 $headerHeight: 80px;
 
-body {
-    font-family: $primary-font;
-}
-
 @import "layout/layout";
 @import "components/components";
 @import "pages/pages";

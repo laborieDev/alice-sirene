@@ -1,10 +1,11 @@
 {
-  "build/app.js": "http://localhost:8080/build/app.js",
-  "build/runtime.js": "http://localhost:8080/build/runtime.js",
-  "build/vendors-node_modules_symfony_stimulus-bridge_dist_index_js-node_modules_bootstrap_dist_js_boo-dcb382.js": "http://localhost:8080/build/vendors-node_modules_symfony_stimulus-bridge_dist_index_js-node_modules_bootstrap_dist_js_boo-dcb382.js",
-  "build/images/fontawesome-webfont.svg": "http://localhost:8080/build/images/fontawesome-webfont.c1e38fd9.svg",
-  "build/fonts/fontawesome-webfont.eot": "http://localhost:8080/build/fonts/fontawesome-webfont.8b43027f.eot",
-  "build/fonts/fontawesome-webfont.ttf": "http://localhost:8080/build/fonts/fontawesome-webfont.1e59d233.ttf",
-  "build/fonts/fontawesome-webfont.woff": "http://localhost:8080/build/fonts/fontawesome-webfont.f691f37e.woff",
-  "build/fonts/fontawesome-webfont.woff2": "http://localhost:8080/build/fonts/fontawesome-webfont.20fd1704.woff2"
+  "build/app.css": "/build/app.4fe35c36.css",
+  "build/app.js": "/build/app.9692d41b.js",
+  "build/runtime.js": "/build/runtime.9a71ee5d.js",
+  "build/778.200b3c18.js": "/build/778.200b3c18.js",
+  "build/images/fontawesome-webfont.svg": "/build/images/fontawesome-webfont.c1e38fd9.svg",
+  "build/fonts/fontawesome-webfont.eot": "/build/fonts/fontawesome-webfont.8b43027f.eot",
+  "build/fonts/fontawesome-webfont.ttf": "/build/fonts/fontawesome-webfont.1e59d233.ttf",
+  "build/fonts/fontawesome-webfont.woff": "/build/fonts/fontawesome-webfont.f691f37e.woff",
+  "build/fonts/fontawesome-webfont.woff2": "/build/fonts/fontawesome-webfont.20fd1704.woff2"
 }

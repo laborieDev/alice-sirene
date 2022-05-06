@@ -37,16 +37,14 @@ class ApiController extends AbstractController
      */
     public function getSearchResults(Request $request, $term)
     {
-        $perPage = $request->get('perPage') ?? 5;
+        $term = strtoupper($term);
+        $perPage = $request->get('perPage') ?? 3;
         $page = $request->get('page') ?? 1;
 
         $url = self::SIRENE_V3_URL."/unites_legales/?denomination={$term}&per_page={$perPage}&page={$page}";
 
         $response = $this->client->request('GET', $url);
-
-        if ($response->getStatusCode() === 500) {
-            throw new NotFoundHttpException('Error to Sirene API');
-        }
+        $this->checkApiError($response);
 
         $content = [];
 
@@ -55,16 +53,20 @@ class ApiController extends AbstractController
         } catch (\Exception $e) {}
 
         $etablissements = $content['unites_legales'] ?? [];
+        $meta = $content['meta'] ?? [];
 
-        return new JsonResponse([
+        $datas = [
             'searchName' => $term,
             'perPage' => $perPage,
             'page' => $page,
-            'totalPages' => $content['totalPages'] ?? 1,
-            'totalResults' => $content['totalPages'] ?? sizeof($etablissements),
-            'etablissement' => $etablissements,
-            'renderHtml' => $this->apiLib->getEtablissementListRender($etablissements)
-        ]);
+            'totalPages' => $meta['total_pages'] ?? 1,
+            'totalResults' => $meta['total_results'] ?? sizeof($etablissements),
+            'etablissements' => $etablissements
+        ];
+
+        return new JsonResponse(array_merge($datas, [
+            'renderHtml' => $this->apiLib->getEtablissementListRender($datas)
+        ]));
     }
 
     /**
@@ -75,20 +77,27 @@ class ApiController extends AbstractController
         $url = self::SIRENE_V3_URL."/etablissements/{$siret}";
 
         $response = $this->client->request('GET', $url);
-        $content = $response->toArray();
+        $this->checkApiError($response);
 
-        if ($response->getStatusCode() !== 200) {
-            throw new NotFoundHttpException('Sirene API not found');
-        }
+        $content = [];
 
-        $etablissementDatas = $content['etablissement'] ?? [];
-        dd($etablissementDatas);
+        try {
+            $content = $response->toArray();
+        } catch (\Exception $e) {}
+
+        $etablissementDatas = $content['etablissement']['unite_legale'] ?? [];
         $etablissement = $this->apiLib->denormalizeEtablissement($etablissementDatas);
-        dd($etablissement);
 
         return new JsonResponse([
             'etablissement' => $etablissementDatas,
-            'renderHtml' => ''
+            'renderHtml' => $this->apiLib->getSingletablissementRender($etablissement)
         ]);
+    }
+
+    public function checkApiError($response)
+    {
+        if ($response->getStatusCode() === 500) {
+            throw new NotFoundHttpException('Error to Sirene API');
+        }
     }
 }
